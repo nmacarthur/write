@@ -1,4 +1,7 @@
 const { app, BrowserWindow } = require('electron')
+const path = require('path')
+
+const Write = require('./src/scripts/write.js')
 
 function createWindow () {
   const win = new BrowserWindow({
@@ -15,7 +18,7 @@ function createWindow () {
     webPreferences: { zoomFactor: 1.0, nodeIntegration: true, backgroundThrottling: false }
   })
 
-  win.loadFile('index.html')
+  win.loadURL(`file://${__dirname}/src/index.html`)
 }
 
 app.whenReady().then(createWindow)
