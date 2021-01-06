@@ -1,5 +1,13 @@
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, ipcMain, dialog } = require('electron')
 const path = require('path')
+
+ipcMain.on('select-dirs', async (event, arg) => {
+	console.log('select-dirs is triggered')
+  const result = await dialog.showOpenDialog(mainWindow, {
+    properties: ['openDirectory']
+  })
+  console.log('directories selected', result.filePaths)
+})
 
 const Write = require('./src/scripts/write.js')
 
