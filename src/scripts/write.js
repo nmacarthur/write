@@ -1,13 +1,6 @@
 const fs = require('fs'); 
 const { resolve } = require('path');
 
-const getPath = async () => {
-	const result = await ipcRenderer.invoke('select-dirs')
-
-	return result.filePath
-}
-
-
 class Write {
 	constructor() {
 		
@@ -47,19 +40,37 @@ class Write {
 		this.DOM.saveButton.addEventListener('click', () => {this.onSave()})
 	}
 
+	openFile = async () => {
+		const result = await ipcRendered.invoke('select-file');
+		console.log(result)
+
+	}
+	
+	getPath = async () => {
+		const result = await ipcRenderer.invoke('select-dirs')
+	
+		return result.filePath
+	}
+
 	onSave = async () => {  
 		// Data which will write in a file. 
 		let data = this.DOM.textarea.value
 
-		await getPath().then(response => {
-			fs.writeFile(response, data, (err) => { 
+		if (this.filepath) {
+			fs.writeFile(this.filepath, data, (err) => { 
 				    // In case of a error throw err. 
 				    if (err) throw err; 
+			})
+		}else {
+			await this.getPath().then(response => {
+				this.filepath = response;
+				fs.writeFile(response, data, (err) => { 
+					    // In case of a error throw err. 
+					    if (err) throw err; 
 				}) 
-		});
-
+			});
+		}
 	}
-
 }
 
 module.exports = Write
