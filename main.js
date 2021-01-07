@@ -25,6 +25,13 @@ async function createWindow () {
 		return result;
 	})
 
+	ipcMain.handle('select-file', async (event, arg) => {
+		const result = await dialog.showOpenDialog(win, {
+			properties: ['openFile']
+		})
+		return result;
+	})
+
 }
 
 app.whenReady().then(createWindow)

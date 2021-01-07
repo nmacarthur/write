@@ -1,3 +1,4 @@
+const { ipcRenderer } = require('electron');
 const fs = require('fs'); 
 const { resolve } = require('path');
 
@@ -26,10 +27,20 @@ class Write {
 		this.DOM.logo.classList.add('logo')
 		this.DOM.el.appendChild(this.DOM.logo)
 
+		this.DOM.buttonContainer = document.createElement('div')
+		this.DOM.buttonContainer.classList.add('btn-container')
+		this.DOM.el.appendChild(this.DOM.buttonContainer)
+
+
 		this.DOM.saveButton = document.createElement('button')
 		this.DOM.saveButton.innerText = 'save'
 		this.DOM.saveButton.classList.add('btn', 'btn--save')
-		this.DOM.el.appendChild(this.DOM.saveButton)
+		this.DOM.buttonContainer.appendChild(this.DOM.saveButton)
+
+		this.DOM.openButton = document.createElement('button')
+		this.DOM.openButton.innerText = 'open'
+		this.DOM.openButton.classList.add('btn')
+		this.DOM.buttonContainer.appendChild(this.DOM.openButton)
 
 		this.DOM.fileBrowser = document.createElement('input')
 		this.DOM.fileBrowser.type = 'file'
@@ -38,18 +49,19 @@ class Write {
 
 	attachEvents() {
 		this.DOM.saveButton.addEventListener('click', () => {this.onSave()})
-	}
-
-	openFile = async () => {
-		const result = await ipcRendered.invoke('select-file');
-		console.log(result)
-
+		this.DOM.openButton.addEventListener('click', () => {this.onOpen()})
 	}
 	
 	getPath = async () => {
 		const result = await ipcRenderer.invoke('select-dirs')
-	
+
 		return result.filePath
+	}
+
+	getFile = async () => {
+		const result = await ipcRenderer.invoke('select-file');
+
+		return result.filePaths[0]
 	}
 
 	onSave = async () => {  
@@ -65,11 +77,28 @@ class Write {
 			await this.getPath().then(response => {
 				this.filepath = response;
 				fs.writeFile(response, data, (err) => { 
-					    // In case of a error throw err. 
-					    if (err) throw err; 
+				    // In case of a error throw err. 
+				    if (err) throw err; 
 				}) 
 			});
 		}
+	}
+
+	onOpen = async () => {
+		await this.getFile().then(response => {
+			fs.readFile(response, "utf8", (err, data) => { 
+			    // In case of a error throw err. 
+			    if (err) throw err; 
+				this.filepath = response;				
+				this.data = data;
+				console.log(this)
+				this.updateText()
+			})
+		})
+	}
+
+	updateText = () => {
+		this.DOM.textarea.value = this.data
 	}
 }
 

@@ -75,8 +75,15 @@ textarea:focus {
 	box-shadow: none;
 }
 
-.btn--save {
-	position:absolute;
+.btn-container {
+	position: absolute;
 	right: 1rem;
 	bottom: 1rem;
+	display: flex;
+	flex-direction: row;
+}
+
+.btn-container > .btn {
+	margin-left: 1rem;
+	
 }
