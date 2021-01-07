@@ -9,17 +9,12 @@
 <body>
 	<script>
 			const { ipcRenderer } = require('electron')
+
 			const Write = require('./scripts/write.js')
 
 			const write = new Write()
+			
 			write.init(document.body)
-
-			window.addEventListener('message', evt => {
-				if (evt.data.type === 'select-dirs') {
-					console.log('yes');
-					ipcRenderer.send('select-dirs')
-				}
-			})
 	</script>
 </body>
 </html>
