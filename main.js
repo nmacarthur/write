@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain, dialog } = require('electron')
+const { app, BrowserWindow, ipcMain, dialog, globalShortcut } = require('electron')
 const path = require('path')
 
 async function createWindow () {
@@ -30,6 +30,10 @@ async function createWindow () {
 			properties: ['openFile']
 		})
 		return result;
+	}) 
+
+	globalShortcut.register('CommandOrControl+S', () => {
+		win.webContents.send('save');
 	})
 
 }
@@ -41,7 +45,7 @@ app.on('window-all-closed', () => {
     app.quit()
   }
 })
-
+ 
 app.on('activate', () => {
   if (BrowserWindow.getAllWindows().length === 0) {
     createWindow()

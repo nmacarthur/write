@@ -50,6 +50,10 @@ class Write {
 	attachEvents() {
 		this.DOM.saveButton.addEventListener('click', () => {this.onSave()})
 		this.DOM.openButton.addEventListener('click', () => {this.onOpen()})
+		ipcRenderer.on('save', () => {
+			console.log('save')
+			this.onSave()
+		})
 	}
 	
 	getPath = async () => {
@@ -91,7 +95,6 @@ class Write {
 			    if (err) throw err; 
 				this.filepath = response;				
 				this.data = data;
-				console.log(this)
 				this.updateText()
 			})
 		})
