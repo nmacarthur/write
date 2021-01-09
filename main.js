@@ -7,13 +7,18 @@ async function createWindow () {
 		height: 462,
 		minWidth: 380,
 		minHeight: 360,
-		backgroundColor: '#000',
-		// icon: path.join(__dirname, { darwin: 'icon.icns', linux: 'icon.png', win32: 'icon.ico' }[process.platform] || 'icon.ico'),
-		resizable: true,
-		frame: process.platform !== 'darwin',
-		skipTaskbar: process.platform === 'darwin',
-		autoHideMenuBar: process.platform === 'darwin',
-		webPreferences: { zoomFactor: 1.0, nodeIntegration: true, backgroundThrottling: false }
+		backgroundColor: '#D3D0CB',
+		titleBarStyle: 'hidden',
+		movable: true,
+		icon: path.join(`${__dirname}/src/media/`, { 
+			darwin: 'icon.icns', 
+			linux: 'icon.png', 
+			win32: 'icon.ico' }[process.platform] || 'icon.ico'),
+		webPreferences: { 
+			zoomFactor: 1.0, 
+			nodeIntegration: true, 
+			backgroundThrottling: false 
+		}
 	})
 
   	win.loadURL(`file://${__dirname}/src/index.html`)
@@ -32,9 +37,9 @@ async function createWindow () {
 		return result;
 	}) 
 
-	globalShortcut.register('CommandOrControl+S', () => {
-		win.webContents.send('save');
-	})
+	// globalShortcut.register('CommandOrControl+S', () => {
+	// 	win.webContents.send('save');
+	// })
 
 }
 

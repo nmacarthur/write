@@ -16,6 +16,7 @@ body, html {
 	margin: 0;
 	background-color: var(--body-color);
 	font-family: var(--font-family);
+	-webkit-app-region: drag;
 }
 
 textarea {

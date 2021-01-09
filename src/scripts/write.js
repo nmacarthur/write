@@ -50,10 +50,9 @@ class Write {
 	attachEvents() {
 		this.DOM.saveButton.addEventListener('click', () => {this.onSave()})
 		this.DOM.openButton.addEventListener('click', () => {this.onOpen()})
-		ipcRenderer.on('save', () => {
-			console.log('save')
-			this.onSave()
-		})
+		// ipcRenderer.on('save', () => {
+		// 	this.onSave()
+		// })
 	}
 	
 	getPath = async () => {

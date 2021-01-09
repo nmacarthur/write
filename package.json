@@ -23,7 +23,9 @@
   },
   "config": {
     "forge": {
-      "packagerConfig": {},
+      "packagerConfig": {
+		"icon": "src/media/icon.icns"
+	  },
       "makers": [
         {
           "name": "@electron-forge/maker-squirrel",
