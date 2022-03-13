@@ -1,0 +1,21 @@
+{
+    "short_name": "Breathe",
+    "name": "Breathe",
+    "background_color": "#D3D0CB",
+    "theme_color": "#D3D0CB",
+    "start_url": "/",
+    "display_override": ["window-control-overlay"],
+    "display": "standalone",
+    "icons": [
+        {
+          "src": "/media/icon.svg",
+          "type": "image/svg",
+          "sizes": "512x512"
+        },
+        {
+          "src": "/media/icon.png",
+          "type": "image/png",
+          "sizes": "512x512"
+        }
+      ]
+}
