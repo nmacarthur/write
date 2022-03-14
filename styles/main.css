@@ -23,6 +23,7 @@ body, html {
 
 textarea {
 	width: 100%;
+    font-size: 1rem;
 	flex-grow: 1;
 	background-color: transparent;
 	color: var(--text-color);
@@ -56,47 +57,10 @@ textarea:focus {
     right: 1rem;
 }
 
-.btn--darkmode > svg {
-    width: 1.5rem;
-    height: auto;
-}
-
-.btn--darkmode > svg > g > path, 
-.btn--darkmode > svg > g > circle {
-    fill: var(--text-color);
-}
-
-.btn--darkmode > svg > g > line {
-    stroke: var(--text-color);
-}
-
-@media (prefers-color-sceme: dark) {
+@media (prefers-color-scheme: dark) {
     :root {
         --body-color: #2E5266;
         --text-color: #D3D0CB;
-    }
-
-    .btn--darkmode .active-mode--dark {
-        opacity: 1;
-    }
-    .btn--darkmode .active-mode--light {
-        opacity: 0;
-    }
-    .btn--darkmode .active-mode--system {
-        opacity: 0;
-    }
-}
-
-
-@media (prefers-color-sceme: light) {
-    .btn--darkmode .active-mode--dark {
-        opacity: 0;
-    }
-    .btn--darkmode .active-mode--light {
-        opacity: 1;
-    }
-    .btn--darkmode .active-mode--system {
-        opacity: 0;
     }
 }
 
