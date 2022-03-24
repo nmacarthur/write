@@ -56,10 +56,12 @@ textarea:focus {
     z-index: 2;
 }
 
-.btn--darkmode {
+.ui {
     position: absolute;
     top: 1rem;
     right: 1rem;
+    display: flex;
+    gap: 1rem;
 }
 
 @media (prefers-color-scheme: dark) {
