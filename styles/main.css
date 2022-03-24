@@ -1,9 +1,14 @@
 :root {
-	--body-color: #D3D0CB;
-	--text-color: #2E5266;
-	--light-color: #9FB1BC;
+	--bg-colour: #D3D0CB;
+    --primary-colour: #2E5266;
+    --secondary-colour: #6E8898;
+
+    --bg-colour--dark-scheme: #2E5266;
+    --primary-colour--dark-scheme: #D3D0CB;
+    --secondary-colour--dark-scheme: #6E8898;
 	--font-family: 'Helvetica';
-	--button-color: #6E8898
+
+    --text-colour: var(--primary-colour);
 }
 
 * {
@@ -15,7 +20,7 @@ body, html {
 	height: 100%;
 	margin: 0;
     padding: 0;
-	background-color: var(--body-color);
+	background-color: var(--bg-colour);
 	font-family: var(--font-family);
 	-webkit-app-region: drag;
     display: grid;
@@ -26,7 +31,7 @@ textarea {
     font-size: 1rem;
 	flex-grow: 1;
 	background-color: transparent;
-	color: var(--text-color);
+	color: var(--text-colour);
 	padding: 2rem;
 	line-height: 1.5;
 	font-family: var(--font-family);
@@ -39,10 +44,10 @@ textarea:focus {
 }
 
 .btn {
-	background-color: var(--body-color);
+	background-color: var(--bg-colour);
 	padding: 0.5rem;
-	border: 1px solid var(--text-color);
-	color: var(--text-color);
+	border: 1px solid var(--secondary-colour);
+	color: var(--secondary-colour);
 	font-weight: light;
 	border-radius: 6px;
 	cursor: pointer;
@@ -59,8 +64,9 @@ textarea:focus {
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --body-color: #2E5266;
-        --text-color: #D3D0CB;
+        --bg-colour: var(--bg-colour--dark-scheme);
+        --primary-colour: var(--primary-colour--dark-scheme);
+        --secondary-colour: var(--secondary-colour--dark-scheme);
     }
 }
 
