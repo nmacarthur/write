@@ -26,21 +26,47 @@ body, html {
     display: grid;
 }
 
-textarea {
+.editor > * {
 	width: 100%;
-    font-size: 1rem;
-	flex-grow: 1;
 	background-color: transparent;
 	color: var(--text-colour);
-	padding: 2rem;
-	line-height: 1.5;
 	font-family: var(--font-family);
 	border: none;
-	resize:none;
+    padding: 2rem;
 }
 
-textarea:focus {
+.editor > input {
+    padding-top: 1.325rem;
+    padding-bottom: 1.325rem;
+}
+
+.editor > input + textarea {
+    padding-top: 0rem;
+}
+
+textarea {
+    font-size: 1rem;
+	line-height: 1.5;
+	resize:none;
+    opacity: 0.6;
+}
+
+input {
+    font-size: 1.25rem;
+    font-weight: bold;
+    font-family: var(--font-family);
+    opacity: 0.6;
+}
+
+textarea:focus,
+input:focus {
 	outline: none;
+    opacity: 1;
+}
+
+textarea::placeholder,
+input::placeholder {
+    color: var(--colour--secondary);
 }
 
 .btn {

@@ -13,15 +13,18 @@
 </head>
 <body>
     <div class="ui">
-        <!--<button class="btn" onclick="load()">
+        <button id="btn--load" class="btn">
             Load
-        </button>-->
-        <button class="btn" onclick="download()">
+        </button>
+        <button id="btn--save" class="btn">
             Save
         </button>
     </div>
-    <textarea id="note" class="textarea"></textarea>
-    <script type="text/javascript" src="./src/index.js"></script>
+    <div class="editor">
+        <input id="title" placeholder="Untitled Document" class="title" />
+        <textarea id="editor" placeholder="Start typing to begin" class="textarea"></textarea>
+    </div>
+    <script type="module" src="./src/index.js"></script>
     <script>
         navigator.serviceWorker.register('./service-worker.js', {});
     </script>
