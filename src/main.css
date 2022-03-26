@@ -91,9 +91,9 @@ input::placeholder {
 
 .ui {
     grid-row: 2;
-    padding: 1rem;
+    padding: 0.5rem;
     display: flex;
-    gap: 1rem;
+    gap: 0.5rem;
     border-top: 0.25px solid var(--secondary-colour);
 }
 
