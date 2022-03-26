@@ -23,28 +23,25 @@ body, html {
 	background-color: var(--bg-colour);
 	font-family: var(--font-family);
 	-webkit-app-region: drag;
-    display: grid;
 }
 
-.editor > * {
+body {
+    display:grid;
+    grid-template-rows: 1fr auto;
+}
+
+.editor {
+    display: grid;
+    grid-row: 1;
+} 
+
+textarea {
 	width: 100%;
 	background-color: transparent;
 	color: var(--text-colour);
 	font-family: var(--font-family);
 	border: none;
     padding: 2rem;
-}
-
-.editor > input {
-    padding-top: 1.325rem;
-    padding-bottom: 1.325rem;
-}
-
-.editor > input + textarea {
-    padding-top: 0rem;
-}
-
-textarea {
     font-size: 1rem;
 	line-height: 1.5;
 	resize:none;
@@ -52,7 +49,11 @@ textarea {
 }
 
 input {
-    font-size: 1.25rem;
+    font-size: 0.875rem;
+    background-color: transparent;
+    width: 100%;
+    color: var(--text-colour);
+    border: none;
     font-weight: bold;
     font-family: var(--font-family);
     opacity: 0.6;
@@ -70,6 +71,7 @@ input::placeholder {
 }
 
 .btn {
+    font-size: 0.75rem;
 	background-color: var(--bg-colour);
 	padding: 0.5rem;
 	border: 1px solid var(--secondary-colour);
@@ -82,12 +84,17 @@ input::placeholder {
     z-index: 2;
 }
 
+.btn:hover {
+    background-color: var(--secondary-colour);
+    color: var(--bg-colour);
+}
+
 .ui {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
+    grid-row: 2;
+    padding: 1rem;
     display: flex;
     gap: 1rem;
+    border-top: 0.25px solid var(--secondary-colour);
 }
 
 @media (prefers-color-scheme: dark) {
