@@ -1,19 +1,13 @@
 import { getById, debounce } from './utils.js';
 import { setDocumentName } from './document.js';
+import valueContainer from './value-container.js';
 
-const editor = getById('editor');
 const title = getById('title');
 
-const getEditorValue = () => editor.value;
+const [ getEditorValue, setEditorValue ] = valueContainer(getById('editor'));
+const [ getTitleValue, setTitleValue ] = valueContainer(title);
 
-const setEditorValue = (value) => editor.value = value;
-
-const getTitleValue = () => title.value;
-
-const setTitleValue = (value) => title.value = value;
-
-title.addEventListener('input', debounce(() =>
-    setDocumentName(getTitleValue()), 300));
+title.addEventListener('input', debounce(() => setDocumentName(getTitleValue()), 300));
 
 export { 
     getEditorValue, 
