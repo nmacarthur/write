@@ -105,7 +105,7 @@ input::placeholder {
     display: flex;
     border: 0.25px solid var(--secondary-colour);
     border-radius: 8px;
-    margin: 0.75rem;
+    margin: 1rem;
     z-index:1;
 }
 
