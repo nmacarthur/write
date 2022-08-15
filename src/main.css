@@ -1,14 +1,16 @@
 :root {
-	--bg-colour: #D3D0CB;
-    --primary-colour: #2E5266;
+	--bg-colour: #EFEFEF;
+    --primary-colour: #000000;
     --secondary-colour: #6E8898;
 
     --bg-colour--dark-scheme: #2E5266;
-    --primary-colour--dark-scheme: #D3D0CB;
+    --primary-colour--dark-scheme: #EFEFEF;
     --secondary-colour--dark-scheme: #6E8898;
-	--font-family: 'Helvetica';
+	--font-family: 'Courier';
 
     --text-colour: var(--primary-colour);
+    --blue: hsl(204, 81%, 74%);
+    --blue-shade: hsl(204, 81%, 74%, 60%);
 }
 
 * {
@@ -50,6 +52,7 @@ textarea {
 
 input {
     font-size: 0.875rem;
+    padding: 0.75rem;
     background-color: transparent;
     width: 100%;
     color: var(--text-colour);
@@ -72,29 +75,65 @@ input::placeholder {
 
 .btn {
     font-size: 0.75rem;
-	background-color: var(--bg-colour);
-	padding: 0.5rem;
-	border: 1px solid var(--secondary-colour);
-	color: var(--secondary-colour);
-	font-weight: light;
-	border-radius: 6px;
+	background-color: transparent;
+	padding: 0.75rem;
+	border: 1px solid var(--blue);
+	color: var(--primary-colour);
+    font-family: var(--font-family);
+	font-weight: bold;
+	border-radius: 0;
 	cursor: pointer;
-	transition: 100ms linear background-color, 100ms linear color, 100ms ease-out transform;
 	box-shadow: none;
     z-index: 2;
+    margin-right: -1px;
+    margin-top: -1px;
+    margin-bottom: -1px;
+    height: calc(100% + 2px);
 }
 
-.btn:hover {
-    background-color: var(--secondary-colour);
-    color: var(--bg-colour);
+.btn:last-child {
+    border-radius: 0 8px 8px 0;
+    margin-right: -2px;
+    margin-top: -1px;
+    margin-bottom: -1px;
 }
+
 
 .ui {
     grid-row: 2;
-    padding: 1rem;
+    padding: 0;
     display: flex;
-    gap: 0.5rem;
-    border-top: 0.25px solid var(--secondary-colour);
+    border: 0.25px solid var(--secondary-colour);
+    border-radius: 8px;
+    margin: 0.75rem;
+    z-index:1;
+}
+
+.layer {
+    display: flex;
+    width: 100%;
+    position: relative;
+    border: 2px solid var(--blue, #000000);
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+.layer:after {
+    content:'';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 10px;
+    left: 10px;
+    border-radius: 8px;
+    z-index: -1;
+    background: repeating-linear-gradient(
+        -45deg, 
+        var(--blue-shade, rgba(0,0,0,0.5)) 0px, 
+        var(--blue-shade, rgba(0,0,0,0.05)) 4px, 
+        var(--blue, rgb(0,0,0)) 4px, 
+        var(--blue, rgb(0,0,0)) 6px
+    );
 }
 
 @media (prefers-color-scheme: dark) {
