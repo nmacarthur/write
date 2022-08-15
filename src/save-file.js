@@ -5,13 +5,15 @@ import { getDocumentName } from './document.js';
 async function saveFile() {
     const content = getEditorValue();
 
-    const file = new Blob([content], { type: "text/plain;charset=utf-8" });
+    const file = new Blob([content], { type: "text/plain" });
 
     const fileName = getDocumentName();
 
     await fileSave(file, {
         fileName,
-        extensions: ['.txt'],
+        accept: {
+            'text/plain': ['.txt'],
+        }
     })
 }
 

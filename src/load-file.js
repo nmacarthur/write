@@ -22,7 +22,9 @@ async function processFile(file) {
 
 async function loadFile() {
     const file = await fileOpen({
-        mimeTypes: ['.txt'],
+        accept: {
+            'text/plain': ['.txt'],
+        }
     });
 
     const  {
