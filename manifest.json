@@ -1,8 +1,8 @@
 {
     "short_name": "Write",
     "name": "Write",
-    "background_color": "#D3D0CB",
-    "theme_color": "#D3D0CB",
+    "background_color": "#EFEFEF",
+    "theme_color": "#EFEFEF",
     "start_url": "/",
     "display_override": ["window-control-overlay"],
     "display": "standalone",
