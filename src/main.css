@@ -115,7 +115,7 @@ input::placeholder {
     position: relative;
     border: 2px solid var(--blue, #000000);
     border-radius: 8px;
-    background-color: #fff;
+    background-color: var(--bg-colour);
 }
 
 .layer:after {
