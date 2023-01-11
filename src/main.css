@@ -144,3 +144,15 @@ input::placeholder {
     }
 }
 
+.mode--focus textarea {
+    padding: calc(50vh - 400px) calc(50vw - 300px);
+}
+
+.mode--focus .ui {
+    opacity: 0;
+    transition: opacity 200ms ease-in-out;
+}
+
+.mode--focus .ui:hover {
+    opacity: 1;
+}
